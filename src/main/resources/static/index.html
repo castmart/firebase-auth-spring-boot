@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+    <script src="main.js"></script>
+</head>
+<!-- The core Firebase JS SDK is always required and must be listed first -->
+<script src="https://www.gstatic.com/firebasejs/8.4.1/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.4.1/firebase-auth.js"></script>
+
+<!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+<script src="https://www.gstatic.com/firebasejs/8.4.1/firebase-analytics.js"></script>
+
+<script>
+    // Your web app's Firebase configuration
+    // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+    var firebaseConfig = {
+        apiKey: "AIzaSyCeocXWibL1Oh9sGwSqeoaRHkHJPkhTkd8",
+        authDomain: "etkt-b5749.firebaseapp.com",
+        projectId: "etkt-b5749",
+        storageBucket: "etkt-b5749.appspot.com",
+        messagingSenderId: "885344667926",
+        appId: "1:885344667926:web:f05765e0dd0ac1f5242837",
+        measurementId: "G-XFQSMJYF19"
+    };
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+    firebase.analytics();
+</script>
+<body>
+<label>Email</label>
+<input id="email" type="text" />
+<label>Password</label>
+<input id="password" type="password" />
+<button onclick="login()">Login</button>
+
+<h1 id="token">OK</h1>
+</body>
+<script>
+    function login() {
+        console.log("authnticating...")
+        firebase
+            .auth()
+            .signInWithEmailAndPassword(document.getElementById("email").value, document.getElementById("password").value)
+            .catch(function (error) {
+                // Handle Errors here.
+                var errorCode = error.code;
+                var errorMessage = error.message;
+                // ...
+                console.log(error)
+            });
+    }
+</script>
+</html>
